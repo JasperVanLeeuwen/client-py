@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2020-02-06.
+#  2020, SMART Health IT.
 
 
 import os
@@ -22,7 +22,7 @@ class BodyStructureTests(unittest.TestCase):
         return bodystructure.BodyStructure(js)
     
     def testBodyStructure1(self):
-        inst = self.instantiate_from("bodystructure-example-fetus.json")
+        inst = self.instantiate_from("bodystructure-example-tumor.json")
         self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
         self.implBodyStructure1(inst)
         
@@ -32,30 +32,6 @@ class BodyStructureTests(unittest.TestCase):
         self.implBodyStructure1(inst2)
     
     def implBodyStructure1(self, inst):
-        self.assertEqual(inst.description, "EDD 1/1/2017 confirmation by LMP")
-        self.assertEqual(inst.id, "fetus")
-        self.assertEqual(inst.identifier[0].system, "http://goodhealth.org/bodystructure/identifiers")
-        self.assertEqual(inst.identifier[0].value, "12345")
-        self.assertEqual(inst.location.coding[0].code, "83418008")
-        self.assertEqual(inst.location.coding[0].display, "Entire fetus (body structure)")
-        self.assertEqual(inst.location.coding[0].system, "http://snomed.info/sct")
-        self.assertEqual(inst.location.text, "Fetus")
-        self.assertEqual(inst.meta.tag[0].code, "HTEST")
-        self.assertEqual(inst.meta.tag[0].display, "test health data")
-        self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
-        self.assertEqual(inst.text.status, "generated")
-    
-    def testBodyStructure2(self):
-        inst = self.instantiate_from("bodystructure-example-tumor.json")
-        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
-        self.implBodyStructure2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("BodyStructure", js["resourceType"])
-        inst2 = bodystructure.BodyStructure(js)
-        self.implBodyStructure2(inst2)
-    
-    def implBodyStructure2(self, inst):
         self.assertEqual(inst.description, "7 cm maximum diameter")
         self.assertEqual(inst.id, "tumor")
         self.assertEqual(inst.identifier[0].system, "http://goodhealth.org/bodystructure/identifiers")
@@ -73,6 +49,30 @@ class BodyStructureTests(unittest.TestCase):
         self.assertEqual(inst.morphology.coding[0].display, "Mass (morphologic abnormality)")
         self.assertEqual(inst.morphology.coding[0].system, "http://snomed.info/sct")
         self.assertEqual(inst.morphology.text, "Splenic mass")
+        self.assertEqual(inst.text.status, "generated")
+    
+    def testBodyStructure2(self):
+        inst = self.instantiate_from("bodystructure-example-fetus.json")
+        self.assertIsNotNone(inst, "Must have instantiated a BodyStructure instance")
+        self.implBodyStructure2(inst)
+        
+        js = inst.as_json()
+        self.assertEqual("BodyStructure", js["resourceType"])
+        inst2 = bodystructure.BodyStructure(js)
+        self.implBodyStructure2(inst2)
+    
+    def implBodyStructure2(self, inst):
+        self.assertEqual(inst.description, "EDD 1/1/2017 confirmation by LMP")
+        self.assertEqual(inst.id, "fetus")
+        self.assertEqual(inst.identifier[0].system, "http://goodhealth.org/bodystructure/identifiers")
+        self.assertEqual(inst.identifier[0].value, "12345")
+        self.assertEqual(inst.location.coding[0].code, "83418008")
+        self.assertEqual(inst.location.coding[0].display, "Entire fetus (body structure)")
+        self.assertEqual(inst.location.coding[0].system, "http://snomed.info/sct")
+        self.assertEqual(inst.location.text, "Fetus")
+        self.assertEqual(inst.meta.tag[0].code, "HTEST")
+        self.assertEqual(inst.meta.tag[0].display, "test health data")
+        self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
         self.assertEqual(inst.text.status, "generated")
     
     def testBodyStructure3(self):

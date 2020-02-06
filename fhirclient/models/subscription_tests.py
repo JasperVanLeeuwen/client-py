@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2020-02-06.
+#  2020, SMART Health IT.
 
 
 import os
@@ -22,7 +22,7 @@ class SubscriptionTests(unittest.TestCase):
         return subscription.Subscription(js)
     
     def testSubscription1(self):
-        inst = self.instantiate_from("subscription-example-error.json")
+        inst = self.instantiate_from("subscription-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Subscription instance")
         self.implSubscription1(inst)
         
@@ -41,18 +41,17 @@ class SubscriptionTests(unittest.TestCase):
         self.assertEqual(inst.criteria, "Observation?code=http://loinc.org|1975-2")
         self.assertEqual(inst.end.date, FHIRDate("2021-01-01T00:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
-        self.assertEqual(inst.error, "Socket Error 10060 - can't connect to host")
-        self.assertEqual(inst.id, "example-error")
+        self.assertEqual(inst.id, "example")
         self.assertEqual(inst.meta.tag[0].code, "HTEST")
         self.assertEqual(inst.meta.tag[0].display, "test health data")
         self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
         self.assertEqual(inst.reason, "Monitor new neonatal function")
-        self.assertEqual(inst.status, "error")
+        self.assertEqual(inst.status, "requested")
         self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>")
         self.assertEqual(inst.text.status, "generated")
     
     def testSubscription2(self):
-        inst = self.instantiate_from("subscription-example.json")
+        inst = self.instantiate_from("subscription-example-error.json")
         self.assertIsNotNone(inst, "Must have instantiated a Subscription instance")
         self.implSubscription2(inst)
         
@@ -71,12 +70,13 @@ class SubscriptionTests(unittest.TestCase):
         self.assertEqual(inst.criteria, "Observation?code=http://loinc.org|1975-2")
         self.assertEqual(inst.end.date, FHIRDate("2021-01-01T00:00:00Z").date)
         self.assertEqual(inst.end.as_json(), "2021-01-01T00:00:00Z")
-        self.assertEqual(inst.id, "example")
+        self.assertEqual(inst.error, "Socket Error 10060 - can't connect to host")
+        self.assertEqual(inst.id, "example-error")
         self.assertEqual(inst.meta.tag[0].code, "HTEST")
         self.assertEqual(inst.meta.tag[0].display, "test health data")
         self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
         self.assertEqual(inst.reason, "Monitor new neonatal function")
-        self.assertEqual(inst.status, "requested")
+        self.assertEqual(inst.status, "error")
         self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">[Put rendering here]</div>")
         self.assertEqual(inst.text.status, "generated")
 

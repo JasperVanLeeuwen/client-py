@@ -3,6 +3,7 @@
 # os.path.join() if the generator should work on Windows, too.
 
 from Default.settings import *
+from mappings import *
 
 # Base URL for where to load specification data from
 specification_url = 'http://hl7.org/fhir/R4'

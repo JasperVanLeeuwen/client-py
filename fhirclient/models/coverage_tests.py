@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2020-02-06.
+#  2020, SMART Health IT.
 
 
 import os
@@ -77,7 +77,7 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(inst.type.coding[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActCode")
     
     def testCoverage2(self):
-        inst = self.instantiate_from("coverage-example-selfpay.json")
+        inst = self.instantiate_from("coverage-example-ehic.json")
         self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
         self.implCoverage2(inst)
         
@@ -87,33 +87,6 @@ class CoverageTests(unittest.TestCase):
         self.implCoverage2(inst2)
     
     def implCoverage2(self, inst):
-        self.assertEqual(inst.id, "SP1234")
-        self.assertEqual(inst.identifier[0].system, "http://hospitalx.com/selfpayagreement")
-        self.assertEqual(inst.identifier[0].value, "SP12345678")
-        self.assertEqual(inst.meta.tag[0].code, "HTEST")
-        self.assertEqual(inst.meta.tag[0].display, "test health data")
-        self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
-        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-17").date)
-        self.assertEqual(inst.period.end.as_json(), "2012-03-17")
-        self.assertEqual(inst.relationship.coding[0].code, "self")
-        self.assertEqual(inst.status, "active")
-        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of a Self Pay Agreement.</div>")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.type.coding[0].code, "pay")
-        self.assertEqual(inst.type.coding[0].display, "PAY")
-        self.assertEqual(inst.type.coding[0].system, "http://terminology.hl7.org/CodeSystem/coverage-selfpay")
-    
-    def testCoverage3(self):
-        inst = self.instantiate_from("coverage-example-ehic.json")
-        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage3(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("Coverage", js["resourceType"])
-        inst2 = coverage.Coverage(js)
-        self.implCoverage3(inst2)
-    
-    def implCoverage3(self, inst):
         self.assertEqual(inst.id, "7547E")
         self.assertEqual(inst.identifier[0].system, "http://ehic.com/insurer/123456789/member")
         self.assertEqual(inst.identifier[0].value, "A123456780")
@@ -130,17 +103,17 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(inst.type.coding[0].display, "extended healthcare")
         self.assertEqual(inst.type.coding[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActCode")
     
-    def testCoverage4(self):
+    def testCoverage3(self):
         inst = self.instantiate_from("coverage-example.json")
         self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
-        self.implCoverage4(inst)
+        self.implCoverage3(inst)
         
         js = inst.as_json()
         self.assertEqual("Coverage", js["resourceType"])
         inst2 = coverage.Coverage(js)
-        self.implCoverage4(inst2)
+        self.implCoverage3(inst2)
     
-    def implCoverage4(self, inst):
+    def implCoverage3(self, inst):
         self.assertEqual(inst.class_fhir[0].name, "Corporate Baker's Inc. Local #35")
         self.assertEqual(inst.class_fhir[0].type.coding[0].code, "group")
         self.assertEqual(inst.class_fhir[0].type.coding[0].system, "http://terminology.hl7.org/CodeSystem/coverage-class")
@@ -195,4 +168,31 @@ class CoverageTests(unittest.TestCase):
         self.assertEqual(inst.type.coding[0].code, "EHCPOL")
         self.assertEqual(inst.type.coding[0].display, "extended healthcare")
         self.assertEqual(inst.type.coding[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActCode")
+    
+    def testCoverage4(self):
+        inst = self.instantiate_from("coverage-example-selfpay.json")
+        self.assertIsNotNone(inst, "Must have instantiated a Coverage instance")
+        self.implCoverage4(inst)
+        
+        js = inst.as_json()
+        self.assertEqual("Coverage", js["resourceType"])
+        inst2 = coverage.Coverage(js)
+        self.implCoverage4(inst2)
+    
+    def implCoverage4(self, inst):
+        self.assertEqual(inst.id, "SP1234")
+        self.assertEqual(inst.identifier[0].system, "http://hospitalx.com/selfpayagreement")
+        self.assertEqual(inst.identifier[0].value, "SP12345678")
+        self.assertEqual(inst.meta.tag[0].code, "HTEST")
+        self.assertEqual(inst.meta.tag[0].display, "test health data")
+        self.assertEqual(inst.meta.tag[0].system, "http://terminology.hl7.org/CodeSystem/v3-ActReason")
+        self.assertEqual(inst.period.end.date, FHIRDate("2012-03-17").date)
+        self.assertEqual(inst.period.end.as_json(), "2012-03-17")
+        self.assertEqual(inst.relationship.coding[0].code, "self")
+        self.assertEqual(inst.status, "active")
+        self.assertEqual(inst.text.div, "<div xmlns=\"http://www.w3.org/1999/xhtml\">A human-readable rendering of a Self Pay Agreement.</div>")
+        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(inst.type.coding[0].code, "pay")
+        self.assertEqual(inst.type.coding[0].display, "PAY")
+        self.assertEqual(inst.type.coding[0].system, "http://terminology.hl7.org/CodeSystem/coverage-selfpay")
 

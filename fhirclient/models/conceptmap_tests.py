@@ -1,8 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#  Generated from FHIR 4.0.0-a53ec6ee1b on 2019-05-07.
-#  2019, SMART Health IT.
+#  Generated from FHIR 4.0.1-9346c8cc45 on 2020-02-06.
+#  2020, SMART Health IT.
 
 
 import os
@@ -22,7 +22,7 @@ class ConceptMapTests(unittest.TestCase):
         return conceptmap.ConceptMap(js)
     
     def testConceptMap1(self):
-        inst = self.instantiate_from("conceptmap-example.json")
+        inst = self.instantiate_from("conceptmap-example-2.json")
         self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
         self.implConceptMap1(inst)
         
@@ -32,6 +32,49 @@ class ConceptMapTests(unittest.TestCase):
         self.implConceptMap1(inst2)
     
     def implConceptMap1(self, inst):
+        self.assertEqual(inst.contact[0].name, "FHIR project team (example)")
+        self.assertEqual(inst.contact[0].telecom[0].system, "url")
+        self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
+        self.assertEqual(inst.date.date, FHIRDate("2012-06-13").date)
+        self.assertEqual(inst.date.as_json(), "2012-06-13")
+        self.assertEqual(inst.description, "An example mapping")
+        self.assertTrue(inst.experimental)
+        self.assertEqual(inst.group[0].element[0].code, "code")
+        self.assertEqual(inst.group[0].element[0].display, "Example Code")
+        self.assertEqual(inst.group[0].element[0].target[0].code, "code2")
+        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].display, "Something Coded")
+        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].property, "http://example.org/fhir/property-value/example")
+        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].system, "http://example.org/fhir/example3")
+        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].value, "some-code")
+        self.assertEqual(inst.group[0].element[0].target[0].display, "Some Example Code")
+        self.assertEqual(inst.group[0].element[0].target[0].equivalence, "equivalent")
+        self.assertEqual(inst.group[0].source, "http://example.org/fhir/example1")
+        self.assertEqual(inst.group[0].target, "http://example.org/fhir/example2")
+        self.assertEqual(inst.group[0].unmapped.mode, "other-map")
+        self.assertEqual(inst.group[0].unmapped.url, "http://example.org/fhir/ConceptMap/map2")
+        self.assertEqual(inst.id, "example2")
+        self.assertEqual(inst.name, "FHIR-exanple-2")
+        self.assertEqual(inst.publisher, "HL7, Inc")
+        self.assertEqual(inst.purpose, "To illustrate mapping features")
+        self.assertEqual(inst.sourceUri, "http://example.org/fhir/example1")
+        self.assertEqual(inst.status, "draft")
+        self.assertEqual(inst.targetUri, "http://example.org/fhir/example2")
+        self.assertEqual(inst.text.status, "generated")
+        self.assertEqual(inst.title, "FHIR Example 2")
+        self.assertEqual(inst.url, "http://hl7.org/fhir/ConceptMap/example2")
+        self.assertEqual(inst.version, "4.0.1")
+    
+    def testConceptMap2(self):
+        inst = self.instantiate_from("conceptmap-example.json")
+        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
+        self.implConceptMap2(inst)
+        
+        js = inst.as_json()
+        self.assertEqual("ConceptMap", js["resourceType"])
+        inst2 = conceptmap.ConceptMap(js)
+        self.implConceptMap2(inst2)
+    
+    def implConceptMap2(self, inst):
         self.assertEqual(inst.contact[0].name, "FHIR project team (example)")
         self.assertEqual(inst.contact[0].telecom[0].system, "url")
         self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
@@ -83,50 +126,7 @@ class ConceptMapTests(unittest.TestCase):
         self.assertEqual(inst.useContext[0].code.code, "venue")
         self.assertEqual(inst.useContext[0].code.system, "http://terminology.hl7.org/CodeSystem/usage-context-type")
         self.assertEqual(inst.useContext[0].valueCodeableConcept.text, "for CCDA Usage")
-        self.assertEqual(inst.version, "4.0.0")
-    
-    def testConceptMap2(self):
-        inst = self.instantiate_from("conceptmap-example-2.json")
-        self.assertIsNotNone(inst, "Must have instantiated a ConceptMap instance")
-        self.implConceptMap2(inst)
-        
-        js = inst.as_json()
-        self.assertEqual("ConceptMap", js["resourceType"])
-        inst2 = conceptmap.ConceptMap(js)
-        self.implConceptMap2(inst2)
-    
-    def implConceptMap2(self, inst):
-        self.assertEqual(inst.contact[0].name, "FHIR project team (example)")
-        self.assertEqual(inst.contact[0].telecom[0].system, "url")
-        self.assertEqual(inst.contact[0].telecom[0].value, "http://hl7.org/fhir")
-        self.assertEqual(inst.date.date, FHIRDate("2012-06-13").date)
-        self.assertEqual(inst.date.as_json(), "2012-06-13")
-        self.assertEqual(inst.description, "An example mapping")
-        self.assertTrue(inst.experimental)
-        self.assertEqual(inst.group[0].element[0].code, "code")
-        self.assertEqual(inst.group[0].element[0].display, "Example Code")
-        self.assertEqual(inst.group[0].element[0].target[0].code, "code2")
-        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].display, "Something Coded")
-        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].property, "http://example.org/fhir/property-value/example")
-        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].system, "http://example.org/fhir/example3")
-        self.assertEqual(inst.group[0].element[0].target[0].dependsOn[0].value, "some-code")
-        self.assertEqual(inst.group[0].element[0].target[0].display, "Some Example Code")
-        self.assertEqual(inst.group[0].element[0].target[0].equivalence, "equivalent")
-        self.assertEqual(inst.group[0].source, "http://example.org/fhir/example1")
-        self.assertEqual(inst.group[0].target, "http://example.org/fhir/example2")
-        self.assertEqual(inst.group[0].unmapped.mode, "other-map")
-        self.assertEqual(inst.group[0].unmapped.url, "http://example.org/fhir/ConceptMap/map2")
-        self.assertEqual(inst.id, "example2")
-        self.assertEqual(inst.name, "FHIR-exanple-2")
-        self.assertEqual(inst.publisher, "HL7, Inc")
-        self.assertEqual(inst.purpose, "To illustrate mapping features")
-        self.assertEqual(inst.sourceUri, "http://example.org/fhir/example1")
-        self.assertEqual(inst.status, "draft")
-        self.assertEqual(inst.targetUri, "http://example.org/fhir/example2")
-        self.assertEqual(inst.text.status, "generated")
-        self.assertEqual(inst.title, "FHIR Example 2")
-        self.assertEqual(inst.url, "http://hl7.org/fhir/ConceptMap/example2")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
     
     def testConceptMap3(self):
         inst = self.instantiate_from("conceptmap-example-specimen-type.json")
@@ -198,8 +198,8 @@ class ConceptMapTests(unittest.TestCase):
         self.assertEqual(inst.publisher, "FHIR project team (original source: LabMCoP)")
         self.assertEqual(inst.sourceCanonical, "http://terminology.hl7.org/ValueSet/v2-0487")
         self.assertEqual(inst.status, "draft")
-        self.assertEqual(inst.targetCanonical, "http://snomed.info/id?fhir_vs")
+        self.assertEqual(inst.targetCanonical, "http://snomed.info/sct?fhir_vs")
         self.assertEqual(inst.text.status, "generated")
         self.assertEqual(inst.url, "http://hl7.org/fhir/ConceptMap/102")
-        self.assertEqual(inst.version, "4.0.0")
+        self.assertEqual(inst.version, "4.0.1")
 
